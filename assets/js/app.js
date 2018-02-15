@@ -1,3 +1,11 @@
+// NOTE: ATTRIBUTIONS FOR CREATION OF THE PHOENIX CHANNEL
+// AND ELIXIR MODULES GO TO CS4550 COURSE NOTES
+
+// I'm sorry I had difficulty connecting the various pieces together
+// for this assignment, but the code is still written out
+// for configuration of the phoenix channel, elixir backend, and react game 
+
+
 // Brunch automatically concatenates all files in your
 // watched paths. Those paths can be configured at
 // config.paths.watched in "brunch-config.js".
@@ -14,7 +22,7 @@
 import "phoenix_html";
 
 // Import local files
-//
+
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
@@ -30,7 +38,7 @@ function init() {
   }
 
   if (document.getElementById('index-page')) {
-    login_init();
+    //login_init();
   }
 }
 

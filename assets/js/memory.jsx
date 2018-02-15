@@ -7,16 +7,30 @@ import { InputGroup, Input } from 'reactstrap';
 import Button from 'reactstrap';
 
 export default function memory_init(root, channel) {
-  ReactDOM.render(<Memory channel={channel}/>, root);
+  ReactDOM.render(<Memory channel={channel} />, root);
 }
 
 class Memory extends React.Component {
   constructor(props) {
     super(props);
+    this.channel = props.channel;
     this.state = {
       cardLetter: this.randomizeCards(),
       cardComplete: this.initializeCardComplete()
     };
+
+    this.channel.join()
+        .recieve("ok", this.gotView.bind(this))
+        .recieve("error", response => { console.log("unable to join", response)});
+  }
+
+  gotView(view) {
+    console.log("New view", view);
+    this.setState(view.game);
+  }
+
+  sendClicks(event) {
+    this.channel.push("")
   }
 
   initializeCardComplete() {
@@ -34,7 +48,6 @@ class Memory extends React.Component {
       var letter = cardArray.splice(Math.floor(Math.random()*cardArray.length), 1);
       temp.push(letter);
     }
-  //this.setState({cardComplete:this.state.cardComplete, cardLetter:temp});
     return temp;
   }
 
